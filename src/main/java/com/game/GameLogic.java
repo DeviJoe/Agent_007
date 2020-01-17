@@ -28,7 +28,7 @@ public class GameLogic {
     }
 
     /** Класс, описывающий игровую клетку */
-    public class Cell {
+    private class Cell {
 
         /**  Состояние клетки поля */
         private CellStatus cellStatus;
@@ -55,7 +55,8 @@ public class GameLogic {
 
     /** Полный набор игровых инструментов */
 
-
+    /** Счет */
+    private int score = 0;
     /** Количество бомб на поле */
     private int bombsCount;
     /** Размер поля */
@@ -63,12 +64,18 @@ public class GameLogic {
     /** Игровое состояние */
     private GameStatus gameStatus = GameStatus.BEFORE_START;
 
+    /** Возвращает значение счета */
+    public int getScore() {
+        return score;
+    }
+
+
     /** Координаты местонахождения робота */
-    public class RobotCoordinates {
+    private class RobotCoordinates {
         private int robot_i;
         private int robot_j;
 
-        public RobotCoordinates(int i, int j) {
+        private RobotCoordinates(int i, int j) {
             robot_i = i;
             robot_j = j;
         }
@@ -221,6 +228,7 @@ public class GameLogic {
                     field[r][c].value = 0;
                     r += vector.r;
                     c += vector.c;
+                    score++;
                 } else {
                     gameStatus = GameStatus.FAIL;
                 }
